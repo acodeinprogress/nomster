@@ -27,6 +27,13 @@
   <% end %>
 
   <br />
+  <% if @place.photos.present? %>
+    <% @place.photos.each do |photo| %>
+      <div class="col-xs-12 col-sm-6">
+          <p><%= photo.caption %></p> -
+      </div>
+    <% end %>
+  <% end %>
 
   <div class="pull-right">
     <% if current_user && current_user == @place.user %>
@@ -38,14 +45,35 @@
   </div>
   <div class="clear"></div>
 
-
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <!-- Photo Modal -->
+  <div class="modal fade" id="myPhotoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title" id="myModalLabel">Add a Comment</h4>
+          <h4 class="modal-title" id="myPhotoModalLabel">Add a Photo</h4>
+        </div>
+        <div class="modal-body">
+          <%= simple_form_for @photo, :url => place_photos_path(@place) do |f| %>
+            <%= f.input :caption %>
+            <br />
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <%= f.submit "Add a Comment", :class => 'btn btn-primary' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Comment Modal -->
+  <div class="modal fade" id="myCommentModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myCommentModalLabel">Add a Comment</h4>
         </div>
         <div class="modal-body">
           <%= simple_form_for @comment, :url => place_comments_path(@place) do |f| %>
@@ -66,8 +94,12 @@
     <h1 class="pull-left">Comments</h1>
     &nbsp;&nbsp;&nbsp;
     <!-- Button trigger modal -->
-    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myCommentModal">
       Add a Comment
+    </button>
+    <!-- Button trigger modal -->
+    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myPhotoModal">
+      Add a Photo
     </button>
   <div class="clear"></div>
 
