@@ -74,6 +74,9 @@ body {
   height: 400px;
   width: 100%;
 }
+.clear {
+  clear:both;
+}
 @media (max-width: 900px) {
   .pagination .page.away-4 { 
     display:none; 
