@@ -50,6 +50,12 @@ gem 'geocoder'
 # Use figaro gem to set up ENV variables
 gem 'figaro', '>= 1.0.0'
 
+# Use carrierwave gem for file uploads
+gem 'carrierwave'
+
+# Use fog gem to integrate with AWS
+gem 'fog', '~> 1.3.1'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
