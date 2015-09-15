@@ -5,24 +5,6 @@
   <p><%= @place.description %></p>
 
   <% if @place.latitude.present? && @place.longitude.present? %>
-    <script>
-      function initMap() {
-        var myLatLng = {lat: <%= @place.latitude %>, lng: <%= @place.longitude %>};
-
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 12,
-          center: myLatLng
-        });
-
-        var marker = new google.maps.Marker({
-          position: myLatLng,
-          map: map,
-          title: 'Hello World!'
-        });
-      }
-    </script>
-    <script async defer
-  src="https://maps.googleapis.com/maps/api/js?signed_in=true&callback=initMap"></script>
     <div id="map"></div>
   <% end %>
 
@@ -30,8 +12,12 @@
   <% if @place.photos.present? %>
     <% @place.photos.each do |photo| %>
       <div class="col-xs-12 col-sm-3">
-          <%= image_tag photo.picture %>
-          <p><%= photo.caption %></p> 
+        <a href='<%= photo.picture %>' class="fancybox"><img src='<% photo.picture %>' /></a>
+        <%= link_to photo.picture.to_s, :class => 'fancybox', 
+          :rel => 'gallery1' do %>
+          <%= image_tag photo.picture, :class => 'img-responsive' %><br />
+        <% end %>
+        <p><%= photo.caption %></p> 
       </div>
     <% end %>
   <% end %>
@@ -118,4 +104,21 @@
   <% end %>
 </div>
 
+    <script>
+      function initMap() {
+        var myLatLng = {lat: <%= @place.latitude %>, lng: <%= @place.longitude %>};
 
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 12,
+          center: myLatLng
+        });
+
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: 'Hello World!'
+        });
+      }
+    </script>
+    <script async defer
+  src="https://maps.googleapis.com/maps/api/js?signed_in=true&callback=initMap"></script>

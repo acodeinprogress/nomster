@@ -53,6 +53,9 @@ gem 'figaro', '>= 1.0.0'
 # Use carrierwave gem for file uploads
 gem 'carrierwave'
 
+# Use fancybox for photos
+gem 'fancybox2-rails'
+
 # Use fog gem to integrate with AWS
 gem 'fog', '~> 1.3.1'
 
