@@ -59,6 +59,9 @@ gem 'fancybox2-rails'
 # Use fog gem to integrate with AWS
 gem 'fog', '~> 1.3.1'
 
+#factory girl gem for testing
+gem 'factory_girl_rails', '~> 4.0'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
