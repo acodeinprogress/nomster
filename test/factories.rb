@@ -5,4 +5,10 @@ FactoryGirl.define do
     }
     password "12345678"
   end
+
+  factory :place, class: Place do
+    name "The place"
+    address "123 Something St"
+    description "Awesome"
+  end
 end
