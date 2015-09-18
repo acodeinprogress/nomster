@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class CommentTest < ActiveSupport::TestCase
-
   user = FactoryGirl.create(:user)
 
   test 'humanized rating' do

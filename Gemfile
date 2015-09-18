@@ -62,6 +62,9 @@ gem 'fog', '~> 1.3.1'
 #factory girl gem for testing
 gem 'factory_girl_rails', '~> 4.0'
 
+#Use database_cleaner to clear database after every test
+gem 'database_cleaner'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
